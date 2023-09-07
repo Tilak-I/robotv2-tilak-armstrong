@@ -3,16 +3,19 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
-
+//TO DO: Add a togglgable mode system by clicking Dpad"
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 
 public class RobotContainer {
   public RobotContainer() {
     configureBindings();
-  }
+}
 
-  private void configureBindings() {}
+  private void configureBindings() 
+  {
+
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
