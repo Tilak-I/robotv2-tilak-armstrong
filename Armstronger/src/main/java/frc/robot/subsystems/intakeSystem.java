@@ -19,10 +19,7 @@ public class intakeSystem extends SubsystemBase {
     isCube = true;
   }
 
-  public void setSpeed(double speed)
-  {
-    intakeMotor.set(speed);
-  }
+
 
   public void spintake() //spin + intake im so good at naming stuff 
   {

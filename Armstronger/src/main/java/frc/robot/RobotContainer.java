@@ -6,13 +6,23 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.subsystems.intakeSystem;
 
 public class RobotContainer {
+  private intakeSystem robotIntake;
+  private CommandXboxController mDriverController;
   public RobotContainer() {
     configureBindings();
   }
 
-  private void configureBindings() {}
+  private void configureBindings() 
+  {
+    mDriverController.a().whileTrue(new InstantCommand(() -> robotIntake.spintake()));
+    mDriverController.a().onFalse(new InstantCommand(() -> robotIntake.spout()));
+    mDriverController.b().onTrue(new InstantCommand(() -> robotIntake.stopAll()));
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
