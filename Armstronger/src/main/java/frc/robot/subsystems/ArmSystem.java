@@ -8,8 +8,8 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj2.command.SubsystemBase
-;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 public class ArmSystem extends SubsystemBase {
   private final CANSparkMax mBicep;
   private final Encoder armEncoder;
@@ -35,6 +35,10 @@ public class ArmSystem extends SubsystemBase {
   {
     sniperMode = isSniper;
   }
+
+  public double getBicepEncoderPosition() {
+    return armEncoder.getDistance() / 22.755;
+  }
   
   public void setMode(double speed)
   {
@@ -47,7 +51,9 @@ public class ArmSystem extends SubsystemBase {
       setManualArm(0.6);
     }
   }
-
+  public double neoVelocity(){
+    return mBicep.getEncoder().getVelocity() * 2 * Math.PI;
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
